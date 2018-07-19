@@ -10,7 +10,6 @@ module.exports = (app) => {
 
   const registerUsers = (cursor) => {
     const params = {};
-    // I am trying
     if (cursor) params.cursor = cursor;
     web.users.list(params)
       .then(response => {

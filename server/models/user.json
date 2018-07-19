@@ -16,14 +16,6 @@
     "updatedAt": {
       "type": "date",
       "required": true
-    },
-    "team": {
-      "type": "string",
-      "required": true
-    },
-    "slackId": {
-      "type": "string",
-      "required": true
     }
   },
   "validations": [],

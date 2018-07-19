@@ -53,7 +53,10 @@
   },
   "user": {
     "dataSource": "mongoDs",
-    "public": true
+    "public": true,
+    "options": {
+      "allowEternalTokens": true
+    }
   },
   "SlackUser": {
     "dataSource": "mongoDs",
