@@ -1,0 +1,46 @@
+{
+  "name": "Link",
+  "base": "BaseModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "user": {
+      "type": "string",
+      "required": true
+    },
+    "channel": {
+      "type": "string",
+      "required": true
+    },
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "string",
+      "required": true
+    },
+    "ts": {
+      "type": "string",
+      "required": true
+    },
+    "thumbsup": {
+      "type": "number",
+      "required": true
+    },
+    "team": {
+      "type": "string",
+      "required": true
+    },
+    "tags": {
+      "type": "array",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
