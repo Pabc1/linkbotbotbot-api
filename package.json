@@ -27,7 +27,8 @@
   "devDependencies": {
     "eslint": "^3.17.1",
     "eslint-config-loopback": "^8.0.0",
-    "nsp": "^2.1.0"
+    "nsp": "^2.1.0",
+    "sync-glitch-cli": "^2.0.1"
   },
   "repository": {
     "type": "",
