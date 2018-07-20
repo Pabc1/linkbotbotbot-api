@@ -19,6 +19,7 @@ module.exports = function(User) {
       to: user.email,
       from: 'linkbotbotbot@gmail.com',
       subject: 'linkbotbotbot: verify your email address',
+      protocol: 'https',
     };
     user.verify(options, (err, resp) => {
       if (err) return next(err);
