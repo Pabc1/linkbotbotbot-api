@@ -1,6 +1,0 @@
-'use strict';
-module.exports = {
-  mongoDs: {
-    url: 'mongodb://linkbotbotbot:asdasd123123@ds239681.mlab.com:39681/linkbotbotbot',
-  };
-};

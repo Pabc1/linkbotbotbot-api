@@ -6,9 +6,10 @@ module.exports = function(User) {
       const token = ctx.req.headers.authorization.split(' ');
       if (token[0].toLowerCase() === 'bearer' &&
           token[1] === process.env.BOT_TOKEN) {
-        return next({statusCode: 418});
+        return next();
       }
     };
+    console.log('wut');
     next({statusCode: 401});
   });
 };
