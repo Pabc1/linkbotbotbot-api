@@ -3,11 +3,6 @@ const slackUrl = 'https://slack.com/';
 const {WebClient} = require('@slack/client');
 const web = new WebClient(process.env.SLACK_TOKEN);
 module.exports = (app) => {
-  app.get('/oauth', (req, res) => {
-    console.log(req.query);
-    console.log('Got here');
-  });
-
   const registerUsers = (cursor) => {
     const params = {};
     if (cursor) params.cursor = cursor;
