@@ -12,5 +12,9 @@
     "name": "mongoDs",
     "user": "",
     "connector": "mongodb"
+  },
+  "emailDs": {
+    "name": "emailDs",
+    "connector": "mail"
   }
 }
