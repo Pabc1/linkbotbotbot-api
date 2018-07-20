@@ -62,8 +62,7 @@
     "dataSource": "mongoDs",
     "public": false
   },
-  "ConfirmEmail": {
-    "dataSource": "emailDs",
-    "public": false
+  "Email": {
+    "dataSource": "emailDs"
   }
 }
