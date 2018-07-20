@@ -12,6 +12,7 @@
 *.tgz
 *.xml
 .env
+.tern-port
 .DS_Store
 .idea
 .project
