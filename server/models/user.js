@@ -15,7 +15,7 @@ module.exports = function(User) {
 
   User.afterRemote('create', (ctx, user, next) => {
     const verifyAddress = process.env.LINKBOTBOTBOT_VERIFY +
-          `uid=${user.id}&redirect=%2F`;
+          `uid=${user.id}&redirect=%2Fverified`;
     const options = {
       type: 'email',
       to: user.email,
