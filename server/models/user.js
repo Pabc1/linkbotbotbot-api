@@ -22,8 +22,6 @@ module.exports = function(User) {
       from: 'linkbotbotbot@gmail.com',
       subject: 'linkbotbotbot: verify your email address',
       protocol: 'https',
-      host: 'roasted-dodo.glitch.me',
-      port: 0,
       verifyHref: verifyAddress,
       redirect: '/verified',
     };
