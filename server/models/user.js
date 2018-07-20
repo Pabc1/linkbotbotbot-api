@@ -13,6 +13,19 @@ module.exports = function(User) {
     next({statusCode: 401, message: 'You have to be authenticated'});
   });
 
+  User.afterRemote('create', (ctx, user, next) => {
+    const options = {
+      type: 'email',
+      to: user.email,
+      from: 'linkbotbotbot@gmail.com',
+      subject: 'linkbotbotbot: verify your email address',
+    };
+    user.verify(options, (err, resp, next) => {
+      if (err) return next(err);
+      next();
+    });
+  });
+
   User.observe('after save', (ctx, next) => {
     const Link = loopback.getModel('Link');
     Link.updateAll({
