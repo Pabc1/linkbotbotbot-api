@@ -55,11 +55,15 @@
     "dataSource": "mongoDs",
     "public": true,
     "options": {
-      "allowEternalTokens": true
+      "emailVerificationRequired": true
     }
   },
   "SlackUser": {
     "dataSource": "mongoDs",
+    "public": false
+  },
+  "ConfirmEmail": {
+    "dataSource": "emailDs",
     "public": false
   }
 }
