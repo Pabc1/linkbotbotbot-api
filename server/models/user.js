@@ -20,7 +20,7 @@ module.exports = function(User) {
       from: 'linkbotbotbot@gmail.com',
       subject: 'linkbotbotbot: verify your email address',
     };
-    user.verify(options, (err, resp, next) => {
+    user.verify(options, (err, resp) => {
       if (err) return next(err);
       next();
     });
