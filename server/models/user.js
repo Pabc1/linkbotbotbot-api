@@ -18,10 +18,11 @@ module.exports = function(User) {
     Link.updateAll({
       user: ctx.instance.slackId,
     }, {
-      $set: {userId: ctx.instance._id},
+      userId: ctx.instance.id,
     }, (err, info) => {
-      if (err) return console.log(err);
+      if (err) return next(console.log(err));
       console.log(info.count);
+      next();
     });
   });
 };
