@@ -14,12 +14,18 @@ module.exports = function(User) {
   });
 
   User.afterRemote('create', (ctx, user, next) => {
+    const verifyAddress = process.env.LINKBOTBOTBOT_VERIFY +
+          `uid=${user.id}&redirect=%2F`;
     const options = {
       type: 'email',
       to: user.email,
       from: 'linkbotbotbot@gmail.com',
       subject: 'linkbotbotbot: verify your email address',
       protocol: 'https',
+      host: 'roasted-dodo.glitch.me',
+      port: 0,
+      verifyHref: verifyAddress,
+      redirect: '/verified',
     };
     user.verify(options, (err, resp) => {
       if (err) return next(err);
