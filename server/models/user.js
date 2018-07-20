@@ -1,4 +1,5 @@
 'use strict';
+const loopback = require('loopback');
 
 module.exports = function(User) {
   User.beforeRemote('create', (ctx, user, next) => {
@@ -10,5 +11,16 @@ module.exports = function(User) {
       }
     };
     next({statusCode: 401, message: 'You have to be authenticated'});
+  });
+
+  User.observe('after save', (ctx, next) => {
+    const Link = loopback.getModel('Link');
+    Link.updateAll({
+      user: ctx.instance.slackId,
+    }, {
+      userId: ctx.instance._id,
+    }, (err, info) => {
+      console.log(info.count);
+    });
   });
 };
