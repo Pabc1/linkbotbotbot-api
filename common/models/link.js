@@ -33,10 +33,15 @@ module.exports = function(Link) {
   Link.beforeRemote('find', (ctx, links, next) => {
     const user = app.models.user;
     user.findById(ctx.req.accessToken.userId, (err, result) => {
+      const channels = result.conversations.map(conversation => {
+        return {
+          channel: conversation.id,
+        };
+      });
       ctx.args.filter = {
         where: {
           team: result.teamId,
-          user: result.slackId,
+          or: channels,
         },
       };
       next();
