@@ -22,6 +22,9 @@
     },
     "slackId": {
       "type": "string"
+    },
+    "conversations": {
+      "type": "array"
     }
   },
   "validations": [],

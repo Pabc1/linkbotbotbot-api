@@ -2,6 +2,34 @@
 const loopback = require('loopback');
 
 module.exports = function(User) {
+  User.resPassword = (id, next) => {
+    User.findById(id, (err, user) => {
+      const newPassword = Math.random().toString(36).substring(5);
+      user.setPassword(newPassword, (error) => {
+        User.app.models.Email.send({
+          to: user.email,
+          from: 'linkbotbotbot@gmail.com',
+          subject: 'Password reset',
+          text: `Your password has been reset. You can access with the following password: ${newPassword}`,
+        }, err => {
+          if (err) return next(err);
+          next(null, {statusCode: 200, message: 'An email has been sent'});
+        });
+      });
+    });
+  };
+
+  User.on('resetPasswordRequest', info => {
+    const resetAddress = process.env.LINKBOTBOTBOT_RESET +
+          `access_token=${info.accessToken.id}`;
+    User.app.models.Email.send({
+      to: info.email,
+      from: 'linkbotbotbot@gmail.com',
+      subject: 'Password reset',
+      text: `Access the following link to reset your password: ${resetAddress}`,
+    });
+  });
+
   User.beforeRemote('create', (ctx, user, next) => {
     if (ctx.req.headers.authorization) {
       const token = ctx.req.headers.authorization.split(' ');
@@ -43,4 +71,16 @@ module.exports = function(User) {
       next();
     });
   });
+
+  User.remoteMethod(
+    'resPassword',
+    {
+      description: 'Reset a password',
+      http: {
+        path: '/:id/password-reset',
+        verb: 'post',
+      },
+      accepts: {arg: 'id', type: 'string', required: true},
+    }
+  );
 };
